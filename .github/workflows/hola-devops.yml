@@ -1,0 +1,37 @@
+name: Hola DevOps Arturo Zamorano
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  
+
+jobs:
+  saludar:
+    runs-on: ubuntu-latest
+
+    steps:
+ 
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+ 
+      - name: Imprimir mensaje de bienvenida
+        env:
+          MENSAJE: "👋 ¡Hola DevOps Arturo Zamorano!"
+          AUTOR: "Creado por Arturo Zamorano B"
+        run: |
+          echo "$MENSAJE"
+          echo "$AUTOR"
+
+   
+      - name: Mostrar información del sistema
+        run: |
+          echo "=== Información del Sistema ==="
+          echo "Usuario: $(whoami)"
+          echo "Directorio actual: $(pwd)"
+          echo "Fecha y hora: $(date)"
+          echo "Versión de Ubuntu: $(lsb_release -d)"
+
+      - name: Despedida
+        run: echo "✅ Workflow completado exitosamente"
